@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>orbit_mp</title>
+    <!-- part of a multi-part demonstration: see cs418.cs.illinois.edu -->
+    <script src="wrapWebGL2.js"></script>
+    <script src ="orbit_js.js"></script>
+    <script src="math.js"></script>
+
+
+<!-- The source code of a vertex shader directly in the HTML. The 'type=' command can have any value except "javascript" and just tells the browser not to try to run the code as javascript. -->
+<script id="vert" type="glsl">
+#version 300 es
+layout(location=0) in vec4 position;
+layout(location=1) in vec4 color;
+out vec4 color2;
+uniform mat4 mv;
+uniform mat4 p;
+void main() {
+    gl_Position = p * mv * position;
+    color2 = color;
+}
+</script>
+
+
+<!-- The source code of a fragment shader. -->
+<script id="frag" type="glsl">
+#version 300 es
+precision highp float;
+uniform vec4 color;
+out vec4 fragColor;
+in vec4 color2;
+void main() {
+    fragColor = color2;
+}
+</script>
+
+</head>
+<body><canvas width="500" height="500"></canvas></body>
+</html>
