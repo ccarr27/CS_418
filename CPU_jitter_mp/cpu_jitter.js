@@ -19,22 +19,12 @@ async function initWebGL(gl) {
     gl.compileShader(vertexShader);
     gl.compileShader(fragmentShader);
 
-    if (!gl.getShaderParameter(vertexShader, gl.COMPILE_STATUS)) {
-        console.error('Error compiling vertex shader:', gl.getShaderInfoLog(vertexShader));
-    }
-    if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
-        console.error('Error compiling fragment shader:', gl.getShaderInfoLog(fragmentShader));
-    }
-
     //Create program and attach shaders
     const program = gl.createProgram();
     gl.attachShader(program, vertexShader);
     gl.attachShader(program, fragmentShader);
     gl.linkProgram(program);
 
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.error('Error linking program:', gl.getProgramInfoLog(program));
-    }
 
     return program;
 }
