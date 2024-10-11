@@ -1,0 +1,4 @@
+png 800 600 output.png
+position 4 100 100 200 100 150 200
+color 1.0 0.0 0.0
+drawArraysTriangles
