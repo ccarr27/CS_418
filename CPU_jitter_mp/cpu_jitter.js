@@ -83,16 +83,14 @@ function drawScene(gl, program, buffers) {
     updatePositions(gl, buffers);
 
     //Bind the position buffer
-    const positionLocation = gl.getAttribLocation(program, 'a_position');
     gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);  //Using location 0
+    gl.enableVertexAttribArray(0);
 
     //Bind the color buffer
-    const colorLocation = gl.getAttribLocation(program, 'a_color');
     gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
-    gl.vertexAttribPointer(colorLocation, 3, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(colorLocation);
+    gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 0, 0);  //Using location 1
+    gl.enableVertexAttribArray(1);
 
     //Bind the index buffer
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
