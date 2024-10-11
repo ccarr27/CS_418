@@ -23,7 +23,6 @@ async function initWebGL(gl) {
     gl.attachShader(program, fragmentShader);
     gl.linkProgram(program);
 
-
     return program;
 }
 
@@ -103,16 +102,14 @@ function drawScene(gl, program, buffers, transformMatrix) {
     gl.uniformMatrix3fv(transformLocation, false, transformMatrix);
 
     //Bind the position buffer
-    const positionLocation = gl.getAttribLocation(program, 'a_position');
     gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0); // 0 corresponds to a_position
+    gl.enableVertexAttribArray(0);
 
     //Bind the color buffer
-    const colorLocation = gl.getAttribLocation(program, 'a_color');
     gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
-    gl.vertexAttribPointer(colorLocation, 3, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(colorLocation);
+    gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 0, 0); // 1 corresponds to a_color
+    gl.enableVertexAttribArray(1);
 
     //Bind the index buffer
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);

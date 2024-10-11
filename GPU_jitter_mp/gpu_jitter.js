@@ -68,17 +68,15 @@ function drawScene(gl, program, buffers, time) {
     const timeLocation = gl.getUniformLocation(program, 'u_time');
     gl.uniform1f(timeLocation, time);
 
-    //Bind the position buffer
-    const positionLocation = gl.getAttribLocation(program, 'a_position');
+    //Bind the position buffer (location 0)
     gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(0);
 
-    //Bind the color buffer
-    const colorLocation = gl.getAttribLocation(program, 'a_color');
+    //Bind the color buffer (location 1)
     gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
-    gl.vertexAttribPointer(colorLocation, 3, gl.FLOAT, false, 0, 0);
-    gl.enableVertexAttribArray(colorLocation);
+    gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(1);
 
     //Bind the index buffer
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
